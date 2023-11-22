@@ -18,6 +18,10 @@ Public Class PartRepainter
 
         Next
 
+    End Sub
+
+    Private Sub PartRepainter_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
         Ricarica()
 
     End Sub
@@ -61,7 +65,7 @@ Public Class PartRepainter
         UsedStyles.Clear()
 
         Cursor = Cursors.WaitCursor
-        Status.Text = "Retrieving used FaceStyles"
+        Status.Text = "Retrieving used styles"
         Connect()
 
         Dim Models As SolidEdgePart.Models = objPart.Models
@@ -71,11 +75,16 @@ Public Class PartRepainter
             End
         Else
 
-            Dim totFaces As Integer = 0
+            Dim totModel As Integer = 0
+
             For Each tmpModel As SolidEdgePart.Model In Models
 
+                totModel += 1
+                Status.Text = "Retrieving used styles on model " & totModel.ToString
+
                 Try
-                    Dim tmpBody = CType(tmpModel.Body, SolidEdgeGeometry.Body)
+
+                    Dim tmpBody As SolidEdgeGeometry.Body = tmpModel.Body
 
                     If Not IsNothing(tmpBody.Style) Then
                         If Not UsedStyles.Contains(tmpBody.Style.StyleName) Then
@@ -97,24 +106,30 @@ Public Class PartRepainter
                     End If
 
                     Dim FaceType = SolidEdgeGeometry.FeatureTopologyQueryTypeConstants.igQueryAll
-                    Dim tmpFaces = CType(tmpBody.Faces(FaceType), SolidEdgeGeometry.Faces)
+                    Dim tmpFaces As SolidEdgeGeometry.Faces = tmpBody.Faces(FaceType)
 
+                    Dim totFaceCount As Integer = 0
                     For Each tmpFace As SolidEdgeGeometry.Face In tmpFaces
+                        totFaceCount += 1
+                        Status.Text = "Retrieving used styles on model " & totModel & " Face " & totFaceCount.ToString & "/" & tmpFaces.Count.ToString
 
-                        If Not IsNothing(tmpFace.Style) Then
-                            If Not UsedStyles.Contains(tmpFace.Style.StyleName) Then
+                        If tmpFace.Style IsNot Nothing Then
+
+                            Dim tmpNome As String = tmpFace.Style.StyleName
+
+                            If Not UsedStyles.Contains(tmpNome) Then
 
                                 Dim tmpStile As New Stile
-                                tmpStile.Name = tmpFace.Style.StyleName
-                                tmpStile.Original = tmpFace.Style.StyleName
+                                tmpStile.Name = tmpNome
+                                tmpStile.Original = tmpNome
                                 tmpStile.Faces.Add(tmpFace)
                                 tmpStile.FacesCount = 1
-                                UsedStyles.Add(tmpStile, tmpFace.Style.StyleName)
+                                UsedStyles.Add(tmpStile, tmpNome)
 
                             Else
 
-                                UsedStyles.Item(tmpFace.Style.StyleName).Faces.Add(tmpFace)
-                                UsedStyles.Item(tmpFace.Style.StyleName).FacesCount += 1
+                                UsedStyles.Item(tmpNome).Faces.Add(tmpFace)
+                                UsedStyles.Item(tmpNome).FacesCount += 1
 
                             End If
 
@@ -128,7 +143,11 @@ Public Class PartRepainter
 
             Next
 
+            Dim totFeatures As Integer = 0
             For Each tmpFeature In objPart.DesignEdgebarFeatures
+
+                totFeatures += 1
+                Status.Text = "Retrieving used styles on feature " & totFeatures.ToString & "/" & objPart.DesignEdgebarFeatures.Count.ToString
 
                 Try
                     Dim tmpStyle As SolidEdgeFramework.FaceStyle = tmpFeature.GetStyle
@@ -395,6 +414,8 @@ Public Class PartRepainter
         DeConnect()
 
     End Sub
+
+
 End Class
 
 Public Class Stile
