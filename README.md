@@ -16,6 +16,10 @@ The status bar contains:
 - button to restore initial styles
 - a progress bar
 
+Known issue:
+- Performance degrades on models with a large amount of styled faces
+- Performance slows down with hybrid models (synchronous +ordered)
+
 Releases here: https://github.com/farfilli/Solid-Edge-Part-RePainter/releases
 
 Contributors are very welcome!
