@@ -10,6 +10,8 @@ Public Class PartRepainter
 
     Private Sub PartRepainter_Load(sender As Object, e As EventArgs) Handles Me.Load
 
+        StylesGrid.AutoGenerateColumns = False
+
         Connect()
 
         For Each tmpStile As SolidEdgeFramework.FaceStyle In objPart.FaceStyles
@@ -62,7 +64,9 @@ Public Class PartRepainter
 
     Private Sub Ricarica()
 
+        StylesGrid.DataSource = Nothing
         UsedStyles.Clear()
+        'StylesGrid.Refresh()
 
         Cursor = Cursors.WaitCursor
         Status.Text = "Retrieving used styles"

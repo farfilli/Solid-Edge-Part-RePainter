@@ -23,20 +23,20 @@ Partial Class PartRepainter
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PartRepainter))
         Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(PartRepainter))
         Me.StylesGrid = New System.Windows.Forms.DataGridView()
-        Me.MenuStyles = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
-        Me.Status = New System.Windows.Forms.ToolStripStatusLabel()
-        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.colName = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colBodies = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colFeatures = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.colFaces = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MenuStyles = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.ToolStripDropDownButton1 = New System.Windows.Forms.ToolStripDropDownButton()
         Me.ToolStripDropDownButton2 = New System.Windows.Forms.ToolStripDropDownButton()
+        Me.Status = New System.Windows.Forms.ToolStripStatusLabel()
         CType(Me.StylesGrid, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -61,39 +61,6 @@ Partial Class PartRepainter
         Me.StylesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.StylesGrid.Size = New System.Drawing.Size(384, 339)
         Me.StylesGrid.TabIndex = 0
-        '
-        'MenuStyles
-        '
-        Me.MenuStyles.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.MenuStyles.MaximumSize = New System.Drawing.Size(0, 800)
-        Me.MenuStyles.Name = "MenuStyles"
-        Me.MenuStyles.Size = New System.Drawing.Size(61, 4)
-        '
-        'StatusStrip1
-        '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton2, Me.Status})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 339)
-        Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(384, 22)
-        Me.StatusStrip1.TabIndex = 1
-        Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'Status
-        '
-        Me.Status.Name = "Status"
-        Me.Status.Size = New System.Drawing.Size(39, 17)
-        Me.Status.Text = "Ready"
-        '
-        'ToolStripDropDownButton1
-        '
-        Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
-        Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
-        Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
-        Me.ToolStripDropDownButton1.ShowDropDownArrow = False
-        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(20, 20)
-        Me.ToolStripDropDownButton1.Text = "Refresh"
-        Me.ToolStripDropDownButton1.Visible = False
         '
         'colName
         '
@@ -140,6 +107,33 @@ Partial Class PartRepainter
         Me.colFaces.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
         Me.colFaces.Width = 55
         '
+        'MenuStyles
+        '
+        Me.MenuStyles.Font = New System.Drawing.Font("Segoe UI", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MenuStyles.MaximumSize = New System.Drawing.Size(0, 800)
+        Me.MenuStyles.Name = "MenuStyles"
+        Me.MenuStyles.Size = New System.Drawing.Size(61, 4)
+        '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripDropDownButton2, Me.Status})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 339)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.ShowItemToolTips = True
+        Me.StatusStrip1.Size = New System.Drawing.Size(384, 22)
+        Me.StatusStrip1.TabIndex = 1
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'ToolStripDropDownButton1
+        '
+        Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.ToolStripDropDownButton1.Image = CType(resources.GetObject("ToolStripDropDownButton1.Image"), System.Drawing.Image)
+        Me.ToolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
+        Me.ToolStripDropDownButton1.ShowDropDownArrow = False
+        Me.ToolStripDropDownButton1.Size = New System.Drawing.Size(20, 20)
+        Me.ToolStripDropDownButton1.Text = "Refresh"
+        '
         'ToolStripDropDownButton2
         '
         Me.ToolStripDropDownButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -149,6 +143,12 @@ Partial Class PartRepainter
         Me.ToolStripDropDownButton2.ShowDropDownArrow = False
         Me.ToolStripDropDownButton2.Size = New System.Drawing.Size(20, 20)
         Me.ToolStripDropDownButton2.Text = "Restore"
+        '
+        'Status
+        '
+        Me.Status.Name = "Status"
+        Me.Status.Size = New System.Drawing.Size(39, 17)
+        Me.Status.Text = "Ready"
         '
         'PartRepainter
         '
@@ -161,7 +161,8 @@ Partial Class PartRepainter
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "PartRepainter"
-        Me.Text = "Solid Edge PartRepainter v0.1"
+        Me.Text = "Solid Edge Part Repainter v0.2"
+        Me.TopMost = True
         CType(Me.StylesGrid, System.ComponentModel.ISupportInitialize).EndInit()
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
