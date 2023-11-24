@@ -11,7 +11,14 @@ To change the style right-click the corresponding row and choose from the list o
 
 Hovering the mouse on the row header will highlight the corresponding geometry
 
-The status bar contains a progress bar and a button to restore initial styles
+The status bar contains:
+- button to refresh the table (in case you switch to another part)
+- button to restore initial styles
+- a progress bar
+
+Known issue:
+- Performance degrades on models with a large amount of styled faces
+- Performance slows down with hybrid models (synchronous +ordered)
 
 Releases here: https://github.com/farfilli/Solid-Edge-Part-RePainter/releases
 
