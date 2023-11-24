@@ -270,8 +270,12 @@ Public Class PartRepainter
             Dim brushy As Brush
             brushy = New Drawing.SolidBrush(Color.FromArgb(A * 255, R * 255, G * 255, B * 255))
 
+            Dim penny As Pen
+            penny = New Drawing.Pen(New Drawing.SolidBrush(Color.FromArgb(255, R * 128, G * 128, B * 128)), 1)
+
             gph.FillEllipse(brushy, rec)
-            gph.DrawEllipse(Pens.Black, rec)
+            'gph.DrawEllipse(Pens.Black, rec)
+            gph.DrawEllipse(penny, rec)
 
             oIcon = Drawing.Icon.FromHandle(bm.GetHicon)
 
